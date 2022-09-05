@@ -16,7 +16,6 @@ int main()
 
 	for(int i = 11, b = 0; i < 21; i++, b++)
 	{
-		nums[b] = i; //inputting numbers
 		*(nums + b) = i;
 	}
 
