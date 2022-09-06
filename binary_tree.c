@@ -95,6 +95,21 @@ void printPostorder(struct node* node)
 	printf("%d ", node->data);
 }
 
+//deleting tree
+void deleteTree(struct node* node)
+{
+	if(node == NULL)
+	{
+		return;
+	}
+
+	//delete both subtrees
+	deleteTree(node->left);
+	deleteTree(node->right);
+
+	free(node);
+}
+
 int main()
 {
 	struct node* root = newNode(9);
@@ -115,5 +130,8 @@ int main()
 
 	printf("Postorder traversal\n");
 	printPostorder(root);
-	printf("\n");
+
+	printf("\ntree is deleted");
+	deleteTree(root);
+	root = NULL;
 }
