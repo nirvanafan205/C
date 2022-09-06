@@ -59,15 +59,61 @@ void printPreOrder(struct node* node)
 	printPreOrder(node->right);
 }
 
+//inOrder traversal
+void printInorder(struct node* node)
+{
+	if(node == NULL)
+	{
+		return;
+	}
+
+	//recursion on left child first
+	printInorder(node->left);
+
+	//prints data of node
+	printf("%d ", node->data);
+
+	//recursion on right child
+	printInorder(node->right);
+}
+
+//postOrder traversal
+void printPostorder(struct node* node)
+{
+	if(node == NULL)
+	{
+		return;
+	}
+
+	//recursion on the left
+	printPostorder(node->left);
+
+	//recursion on the right
+	printPostorder(node->right);
+	
+	//prints node data
+	printf("%d ", node->data);
+}
+
 int main()
 {
 	struct node* root = newNode(9);
 	root->left = newNode(1);
 	root->right = newNode(82);
 	root->left->right = newNode(199);
+	root->left->left = newNode(22);
 	root->right->right = newNode(495);
+	root->right->left = newNode(43);
 
 	printf("PreOrder traversal\n");
 	printPreOrder(root);
+	printf("\n");
+
+	printf("InOrder traversal\n");
+	printInorder(root);
+	printf("\n");
+
+	printf("Postorder traversal\n");
+	printPostorder(root);
 	printf("\n");
 }
